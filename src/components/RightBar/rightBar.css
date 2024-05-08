@@ -1,0 +1,43 @@
+.right-bar-container {
+  position: relative;
+  overflow-y: hidden;
+  height: auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.night {
+  background: black;
+}
+
+.day {
+  background: transparent;
+}
+
+.cards-container {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  width: 90%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+@media (max-width: 786px) {
+  .right-bar-container {
+    min-height: 140vh;
+  }
+  .cards-container {
+    grid-template-columns: repeat(1, 1fr);
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}

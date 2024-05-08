@@ -83,7 +83,6 @@ p {
 main {
   display: grid;
   grid-template-columns: 35% 65%;
-  gap: 3%;
   width: 100%;
   overflow-x: hidden;
 }
@@ -94,7 +93,8 @@ main {
 } */
 @media (max-width: 786px) {
   main {
-    grid-template-columns: 100% 0%;
+    display: flex;
+    flex-direction: column;
   }
   .container {
     width: 100%;

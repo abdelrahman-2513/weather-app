@@ -1,0 +1,17 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: var(--color-primary);
+}
+
+.card h2 {
+  color: white;
+  font-weight: bold;
+}
+.card h3 {
+  color: var(--color-soft);
+}
