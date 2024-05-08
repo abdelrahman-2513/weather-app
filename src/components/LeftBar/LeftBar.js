@@ -14,14 +14,20 @@ const { Search } = Input;
 function LeftBar() {
     const QueryClient = useQueryClient()
     const weatherQuery = useQuery({ queryKey: ['weather'], queryFn: getWeatherDefault })
-    const { isFetching } = weatherQuery;
+    const { isFetching, isError } = weatherQuery;
     const weatherMutation = useMutation({
+        mutationKey: ['weatherMutation'],
         mutationFn: getWeatherDataByLocation,
-        onSuccess: (data) => {
-            QueryClient.setQueryData(['weather'], data)
+
+        onSuccess: (res) => {
+
+            QueryClient.setQueryData(['weather'], res.data)
         },
-        onError: (err) => {
-            console.log(err)
+        onError: (err, variables, context) => {
+            QueryClient.setQueryData(['weather'], (oldData) => {
+                return oldData
+            })
+
         }
     })
     const onSearch = (value) => {
@@ -29,8 +35,8 @@ function LeftBar() {
             weatherMutation.mutate(value);
         console.log(value)
     };
-
-    if (isFetching) return <div className="left-bar-container">
+    console.log(isError)
+    if (isFetching || weatherMutation.isPending) return <div className="left-bar-container">
         <LoadingComponent />
     </div>
 

@@ -26,8 +26,8 @@ axiosInstance.interceptors.request.use(
 );
 
 export const getWeatherDefault = () => {
-    return axiosInstance.get("", { params: { q: "cairo" } }).then(res => res.data).catch(err => err)
+    return axiosInstance.get("", { params: { q: "cairo" } }).then(res => res.data)
 };
 export const getWeatherDataByLocation = (loc) => {
-    return axiosInstance.get("", { params: { q: loc } }).then(res => res.data).catch(err => err)
+    return axiosInstance.get("", { params: { q: loc } })
 };

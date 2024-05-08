@@ -1,10 +1,26 @@
 import "./Card.css"
-function Card({ title, value }) {
+import { Card as AntCard, Avatar } from "antd"
+const { Meta } = AntCard;
+function Card({ title, value, img, loading }) {
     return (
-        <div className="card">
-            <h2>{title}</h2>
-            <h3>{value}</h3>
-        </div>
+
+        <AntCard
+            style={{
+                width: 300,
+                marginTop: 16,
+                background: '#6c63ff',
+                height: 150
+            }}
+            loading={loading}
+            hoverable={true}
+        >
+            <Meta
+                avatar={<Avatar src={`/imgs/${img}.png`} />}
+                title={title}
+                description={value} />
+        </AntCard>
+
+
     )
 }
 

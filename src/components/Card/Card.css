@@ -15,3 +15,11 @@
 .card h3 {
   color: var(--color-soft);
 }
+.ant-card-meta-title {
+  color: white;
+  font-weight: 700;
+}
+.ant-card-meta-description {
+  color: var(--color-soft);
+  font-weight: 700;
+}
