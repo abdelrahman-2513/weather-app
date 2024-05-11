@@ -33,9 +33,7 @@ function LeftBar() {
     const onSearch = (value) => {
         if (value)
             weatherMutation.mutate(value);
-        console.log(value)
     };
-    console.log(isError)
     if (isFetching || weatherMutation.isPending) return <div className="left-bar-container">
         <LoadingComponent />
     </div>
@@ -51,12 +49,22 @@ function LeftBar() {
                 />
             </Space>
             <div className="middle-container">
-                <img src={weatherQuery.data?.current.condition.icon} />
+                <img src={weatherQuery.data?.current.condition.icon} alt="temprature icon" />
                 <h3> {weatherQuery.data?.current.condition.text}</h3>
-                <h3> {weatherQuery.data?.current.temp_c + " C"}</h3>
+                <h3> {weatherQuery.data?.current.temp_c}&deg;C</h3>
                 <div className="date-container">
                     <h4>{weatherQuery.data?.location.localtime.split(" ")[0]}</h4>
-                    <h4>{weatherQuery.data?.location.localtime.split(' ')[1].split(":")[0] <= 12 ? `${weatherQuery.data?.location.localtime.split(' ')[1] + " AM"}` : `${weatherQuery.data?.location.localtime.split(' ')[1].split(":")[0] - 12 + ":" + weatherQuery.data?.location.localtime.split(' ')[1].split(":")[1] + " PM"}`}</h4>
+                    <h4>
+                        {
+                            weatherQuery.data?.location.localtime.split(' ')[1].split(":")[0] === "0" ?
+                                `12:${weatherQuery.data?.location.localtime.split(' ')[1].split(":")[1]} AM`
+                                :
+                                weatherQuery.data?.location.localtime.split(' ')[1].split(":")[0] <= 12 ?
+                                    `${weatherQuery.data?.location.localtime.split(' ')[1]} AM`
+                                    :
+                                    `${parseInt(weatherQuery.data?.location.localtime.split(' ')[1].split(":")[0], 10) - 12}:${weatherQuery.data?.location.localtime.split(' ')[1].split(":")[1]} PM`
+                        }
+                    </h4>
                 </div>
             </div>
             <div className="foot-container">

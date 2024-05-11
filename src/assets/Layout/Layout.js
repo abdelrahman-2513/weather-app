@@ -1,11 +1,16 @@
-import LeftBar from "../../components/LeftBar/LeftBar"
-import RightBar from "../../components/RightBar/RightBar"
+import { Suspense, lazy } from "react"
+import LoadingComponent from "../../components/Loading/Loading"
+const LeftBar = lazy(() => import('../../components/LeftBar/LeftBar'))
+const RightBar = lazy(() => import('../../components/RightBar/RightBar'))
 
 function Layout() {
     return (
         <main>
-            <LeftBar />
-            <RightBar />
+            <Suspense fallback={<LoadingComponent />}>
+
+                <LeftBar />
+                <RightBar />
+            </Suspense>
         </main>
     )
 }
