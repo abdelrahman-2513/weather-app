@@ -46,6 +46,7 @@ function LeftBar() {
                     onSearch={onSearch}
                     className="search-bar"
                     required={true}
+                    name="search-bar"
                 />
             </Space>
             <div className="middle-container">
