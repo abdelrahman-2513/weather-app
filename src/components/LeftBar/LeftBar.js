@@ -14,7 +14,7 @@ const { Search } = Input;
 function LeftBar() {
     const QueryClient = useQueryClient()
     const weatherQuery = useQuery({ queryKey: ['weather'], queryFn: getWeatherDefault })
-    const { isFetching, isError } = weatherQuery;
+    const { isFetching } = weatherQuery;
     const weatherMutation = useMutation({
         mutationKey: ['weatherMutation'],
         mutationFn: getWeatherDataByLocation,

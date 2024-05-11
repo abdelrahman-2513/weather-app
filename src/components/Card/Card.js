@@ -15,7 +15,7 @@ function Card({ title, value, img, loading }) {
             hoverable={true}
         >
             <Meta
-                avatar={<Avatar src={`/imgs/${img}.png`} />}
+                avatar={<Avatar src={`/imgs/${img}.png`} alt="temprature-data" />}
                 title={title}
                 description={value} />
         </AntCard>
