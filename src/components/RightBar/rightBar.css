@@ -40,5 +40,14 @@
     grid-template-columns: repeat(1, 1fr);
     right: 50%;
     transform: translate(50%, -50%);
+    height: 100%;
+    width: 75%;
+    align-items: center;
+  }
+}
+@media (max-width: 1024px) {
+  .ant-card {
+    width: 250px !important;
+    height: fit-content !important;
   }
 }
